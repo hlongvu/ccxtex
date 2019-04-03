@@ -25,4 +25,4 @@ ccxtex-*.tar
 /.elixir_ls/
 
 /js/source/node_modules/
-/priv/js/dist/
+.idea/

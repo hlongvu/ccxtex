@@ -13,5 +13,6 @@ defmodule Ccxtex.Market do
     field :quote_id, String.t()
     field :symbol, String.t()
     field :symbol_id, String.t()
+    field :altname, String.t()
   end
 end

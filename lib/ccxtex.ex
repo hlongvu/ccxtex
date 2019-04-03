@@ -307,6 +307,26 @@ defmodule Ccxtex do
     end
   end
 
+  @doc """
+    Fetches markets for a given exchange, return raw value in map type.
+    Some market having more property than defined in Market struct, results in error.
+  """
+  @spec fetch_markets_raw(String.t()) :: {:ok, list(map())} | {:error, term}
+  def fetch_markets_raw(exchange) do
+    with {:ok, markets} <- call_js_main(:fetchMarkets, [exchange]) do
+      markets =
+        markets
+        |> Enum.map(&MapKeys.to_snake_case/1)
+        |> Enum.map(&MapKeys.to_atoms_unsafe!/1)
+#        |> Enum.map(&struct!(Market, &1))
+
+      {:ok, markets}
+    else
+      err_tup -> err_tup
+    end
+  end
+
+
   def call_js_main(jsfn, args) do
     NodeJS.call({"exec.js", jsfn}, args)
   end
