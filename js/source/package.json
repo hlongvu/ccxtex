@@ -9,7 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "ccxt": "^1.18.420"
+    "ccxt": "^1.18.1039"
   },
   "devDependencies": {
     "webpack": "^4.29.6",
